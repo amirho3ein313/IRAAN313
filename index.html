@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🇮🇷 روایت ایران 🇮🇷</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(to top left, #f5f5f5, #e0f7fa);
+      color: #222;
+      margin: 0;
+      direction: rtl;
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #016064;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      position: sticky;
+      top: 0;
+      z-index: 110;
+    }
+    .menu {
+      font-size: 2rem;
+      cursor: pointer;
+      user-select: none;
+      order: 0;
+      margin-left: auto;
+      padding: 0.2rem 0.5rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    .menu:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: -70%;
+      width: 70%;
+      height: 100%;
+      background-color: rgba(1, 96, 100, 0.95);
+      color: #fff;
+      padding: 2rem;
+      transition: left 0.4s ease;
+      z-index: 120;
+      backdrop-filter: blur(8px);
+      overflow-y: auto;
+      box-shadow: 4px 0 12px rgba(0,0,0,0.3);
+      border-top-right-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+    nav.show {
+      left: 0;
+    }
+    nav div {
+      margin: 1.6rem 0;
+      cursor: pointer;
+      font-size: 1.4rem;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding-bottom: 0.7rem;
+      user-select: none;
+      transition: color 0.3s;
+    }
+    nav div:hover {
+      color: #4fd1c5;
+    }
+    main {
+      padding: 2rem 1.5rem;
+      max-width: 100%;
+      margin: auto;
+      min-height: 80vh;
+    }
+    .section {
+      margin-bottom: 3rem;
+      background: #fff;
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .section:hover {
+      box-shadow: 0 18px 38px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+    }
+    .hidden {
+      display: none !important;
+    }
+    textarea, input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 1rem;
+      margin: 0.7rem 0 1.3rem 0;
+      border-radius: 12px;
+      border: 1.6px solid #b2dfdb;
+      font-size: 1.1rem;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+    textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
+      outline: none;
+      border-color: #009688;
+      box-shadow: 0 0 8px #4db6ac;
+    }
+    button {
+      background-color: #00796b;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 2.2rem;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      transition: background 0.3s, transform 0.2s ease;
+      font-family: 'Vazirmatn', sans-serif;
+      box-shadow: 0 6px 10px rgba(0, 121, 107, 0.4);
+    }
+    button:hover {
+      background-color: #004d40;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 121, 107, 0.6);
+    }
+
+    .comment, .message-box {
+     word-break: break-word;
+     overflow-wrap: anywhere;
+     white-space: normal;
+    }
+    .card {
+      text-align: right;
+      background-color: #f1f9f9;
+      border-radius: 20px;
+      padding: 1.5rem 1.8rem;
+      margin-top: 1.8rem;
+      position: relative;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      font-size: 1.05rem;
+      color: #004d40;
+      transition: box-shadow 0.3s ease;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+    }
+    .card:hover {
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    }
+.reaction-btns {
+  display: flex;
+  gap: 0.4rem;              /* کمی فاصله بین دکمه‌ها بیشتر */
+  margin-top: 0.4rem;       /* فاصله بالا بیشتر */
+  font-weight: 700;
+  font-size: 0.65rem;       /* متن کلی کمی بزرگ‌تر */
+}
+
+.reaction-btns button {
+  background-color: #e0f2f1;
+  border: 1.5px solid #009688;
+  border-radius: 14px;      /* گردی دکمه کمی بیشتر */
+  padding: 0.3rem 0.8rem;   /* فضای داخلی بیشتر */
+  cursor: pointer;
+  user-select: none;
+  color: #00796b;
+  box-shadow: 0px 3px 6px rgba(0, 121, 107, 0.2);  /* سایه کمی بیشتر */
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 0.6rem;        /* اندازه فونت داخل دکمه بزرگ‌تر */
+  font-weight: 600;
+}
+
+.reaction-btns button:hover {
+  background-color: #00796b;
+  color: #e0f2f1;
+}
+
+
+    .admin-btns {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .admin-btns button {
+      font-size: 0.85rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 12px;
+      border: none;
+      background-color: #004d40;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 77, 64, 0.7);
+      transition: background-color 0.3s ease;
+    }
+    .admin-btns button:hover {
+      background-color: #00796b;
+    }
+    #footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 1.5rem;
+      color: #444;
+      border-top: 1px solid #ccc;
+      background: #f0f0f0;
+    }
+    .img-commander {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-top: 0.8rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    }
+    .commander-buttons {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.8rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+    .commander-buttons button {
+      flex: 1 1 auto;
+      min-width: 0px;
+      background-color: #004d40;
+      border-radius: 20px;
+      color: #a5d6a7;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.7rem 0;
+      box-shadow: 0 5px 15px rgba(0,77,64,0.3);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .commander-buttons button:hover {
+      background-color: #00796b;
+      color: #e0f2f1;
+    }
+    .commander-count {
+      margin-top: 0.3rem;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #004d40;
+      user-select: none;
+      text-align: center;
+    }
+    .radio-labels {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      user-select: none;
+    }
+    .radio-labels label {
+      margin-left: 1.4rem;
+      cursor: pointer;
+    }
+    input[type=radio] {
+      transform: scale(1.3);
+      cursor: pointer;
+      vertical-align: middle;
+      margin-left: 0.3rem;
+    }
+    #nameField {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="menu" onclick="toggleMenu()">☰</div>
+  <h1>🇮🇷 روایت ایران 🇮🇷</h1>
+</header>
+<nav id="menu">
+  <div onclick="showSection('expand')">📝 گسترش جمله</div>
+  <div onclick="showSection('messages')">📬 پیام‌ها</div>
+  <div onclick="showSection('commanders')">🎖️ یاد شهدا</div>
+  <div onclick="showSection('feelings')">💌 دلنوشته‌ها</div>
+  <div onclick="showSection('feedback')">💬 نظرات</div>
+  <div onclick="showSection('adminLogin')">🔑 ورود مدیریت</div>
+  <div onclick="showSection('about')">ℹ️ درباره ما</div>
+  <div onclick="showSection('contactUs')">📞 ارتباط با ما</div>
+  <div onclick="openExitPopup()" style="cursor: pointer;">🚪 خروج از برنامه</div>
+
+
+</nav>
+<main>
+  <div id="expand" class="section">
+    <h2>به روایت ایران خوش‌آمدید.</h2>
+    <p>اینجا می‌توانید دیدگاه‌های خود را با ما به اشتراک بگذارید و نظرات دیگران را ببینید.</p>
+    <h4>( جمله زیر را ادامه بده )</h4>
+    <p><strong>🔰ما در جنگ با رژیم صهیونیستی ، جنگ رو ...</strong></p>
+    <textarea id="expandText" placeholder="ادامه جمله رو بنویس..."></textarea>
+    <div class="radio-labels">
+      <label><input type="radio" name="anon" value="yes" checked> ناشناس</label>
+      <label><input type="radio" name="anon" value="no"> با نام</label>
+    </div>
+    <input id="nameField" class="hidden" type="text" placeholder="نام شما" />
+    <button onclick="submitExpansion()">ارسال</button>
+    <div id="expansions"></div>
+  </div>
+
+  <div id="messages" class="section hidden">
+    <h2>پیام‌های مردم</h2>
+    <div id="messageList"></div>
+  </div>
+
+  <div id="commanders" class="section hidden">
+        <title>یاد فرماندهان شهید</title>
+        <style>
+
+
+          #commanders {
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+          }
+
+          #contactUsh2 {
+            text-align: right;
+            margin-bottom: 20px;
+            color: #004d40;
+            font-size: 26px;
+          }
+
+          .search-bar {
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 0 15px;
+          }
+
+          .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          }
+
+          .result-message {
+            text-align: right;
+            color: #b71c1c;
+            margin-bottom: 20px;
+            font-size: 14px;
+          }
+
+          .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            text-align: right;
+          }
+
+          .card img {
+            width: 180px;
+            height: auto;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: right;
+          }
+
+          .commander-buttons button {
+            margin: 5px;
+            padding: 8px 12px;
+            font-size: 14px;
+            background: #00796b;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+          }
+
+          .commander-buttons button:hover {
+            background: #004d40;
+          }
+
+          @media screen and (max-width: 500px) {
+            .card img {
+              width: 100%;
+            }
+
+            .commander-buttons button {
+              width: 100%;
+              margin: 6px 0;
+            }
+          }
+        </style>
+      </head>
+      <body>
+
+        <div id="commanders">
+          <h2>🏅فرماندهان شهید🏅</h2>
+
+          <!-- نوار جست‌وجو -->
+          <div class="search-bar">
+            <input type="text" id="commanderSearch" placeholder="🔍 جستجوی نام فرمانده شهید..." oninput="filterCommanders()">
+          </div>
+          <div id="commanderSearchResult" class="result-message"></div>
+
+          <!-- فرمانده ۱ -->
+          <div class="card" data-id="0">
+            <strong>شهید امیرعلی حاجی زاده</strong>
+            <p>فرمانده نیروی هوافضای سپاه</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Amirali_Hajizadeh.jpg/440px-Amirali_Hajizadeh.jpg" alt="سرلشگر امیرعلی حاجی زاده" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 0)">صلوات (<span id="salavat-0">0</span>)</button>
+            <button onclick="increment('ziarat', 0)">زیارت عاشورا (<span id="ziarat-0">0</span>)</button>
+            <button onclick="increment('fateha', 0)">فاتحه (<span id="fateha-0">0</span>)</button>
+            <button onclick="increment('quran', 0)">صفحه قرآن (<span id="quran-0">0</span>)</button>
+            </div>
+          </div>
+
+          <!-- فرمانده ۲ -->
+          <div class="card" data-id="1">
+            <strong>شهید حسین سلامی</strong>
+            <p>فرمانده کل سپاه پاسداران</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Ahmad_Kazemi.JPG" alt="سرلشگر حسین سلامی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 1)">صلوات (<span id="salavat-1">0</span>)</button>
+            <button onclick="increment('ziarat', 1)">زیارت عاشورا (<span id="ziarat-1">0</span>)</button>
+            <button onclick="increment('fateha', 1)">فاتحه (<span id="fateha-1">0</span>)</button>
+            <button onclick="increment('quran', 1)">صفحه قرآن (<span id="quran-1">0</span>)</button>
+            </div>
+          </div>
+
+          <!-- فرمانده ۳ -->
+          <div class="card" data-id="2">
+            <strong>شهید محمد باقری</strong>
+            <p>رئیس ستاد کل نیروهای مسلح</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Mohammad_Ebrahim_Hemat.jpg" alt="سرلشکر محمد باقری" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 2)">صلوات (<span id="salavat-2">0</span>)</button>
+            <button onclick="increment('ziarat', 2)">زیارت عاشورا (<span id="ziarat-2">0</span>)</button>
+            <button onclick="increment('fateha', 2)">فاتحه (<span id="fateha-2">0</span>)</button>
+            <button onclick="increment('quran', 2)">صفحه قرآن (<span id="quran-2">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="3">
+            <strong>شهید احمد کاظمی</strong>
+            <p>فرمانده نیروی زمینی سپاه</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Ahmad_Kazemi2.jpg" alt="شهید احمد کاظمی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 3)">صلوات (<span id="salavat-3">0</span>)</button>
+            <button onclick="increment('ziarat', 3)">زیارت عاشورا (<span id="ziarat-3">0</span>)</button>
+            <button onclick="increment('fateha', 3)">فاتحه (<span id="fateha-3">0</span>)</button>
+            <button onclick="increment('quran', 3)">صفحه قرآن (<span id="quran-3">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="4">
+            <strong>شهید حسن تهرانی مقدم</strong>
+            <p>پدر صنعت موشکی ایران</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Hassan_Tehrani_Moghaddam.jpg" alt="شهید حسن تهرانی مقدم" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 4)">صلوات (<span id="salavat-4">0</span>)</button>
+            <button onclick="increment('ziarat', 4)">زیارت عاشورا (<span id="ziarat-4">0</span>)</button>
+            <button onclick="increment('fateha', 4)">فاتحه (<span id="fateha-4">0</span>)</button>
+            <button onclick="increment('quran', 4)">صفحه قرآن (<span id="quran-4">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="5">
+            <strong>شهید محمد ابراهیم همت</strong>
+            <p>فرمانده لشکر ۲۷ محمد رسول‌الله</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Mohammad_Ebrahim_Hemat.jpg" alt="شهید همت" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 5)">صلوات (<span id="salavat-5">0</span>)</button>
+            <button onclick="increment('ziarat', 5)">زیارت عاشورا (<span id="ziarat-5">0</span>)</button>
+            <button onclick="increment('fateha', 5)">فاتحه (<span id="fateha-5">0</span>)</button>
+            <button onclick="increment('quran', 5)">صفحه قرآن (<span id="quran-5">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="6">
+            <strong>شهید مهدی باکری</strong>
+            <p>فرمانده لشکر عاشورا</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mahdi_Bakri.jpg" alt="شهید مهدی باکری" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 6)">صلوات (<span id="salavat-6">0</span>)</button>
+            <button onclick="increment('ziarat', 6)">زیارت عاشورا (<span id="ziarat-6">0</span>)</button>
+            <button onclick="increment('fateha', 6)">فاتحه (<span id="fateha-6">0</span>)</button>
+            <button onclick="increment('quran', 6)">صفحه قرآن (<span id="quran-6">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="7">
+            <strong>شهید عباس بابایی</strong>
+            <p>خلبان نیروی هوایی ارتش</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Abbas_Babaei.jpg" alt="شهید عباس بابایی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 7)">صلوات (<span id="salavat-7">0</span>)</button>
+            <button onclick="increment('ziarat', 7)">زیارت عاشورا (<span id="ziarat-7">0</span>)</button>
+            <button onclick="increment('fateha', 7)">فاتحه (<span id="fateha-7">0</span>)</button>
+            <button onclick="increment('quran', 7)">صفحه قرآن (<span id="quran-7">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="8">
+            <strong>شهید صیاد شیرازی</strong>
+            <p>فرمانده نیروی زمینی ارتش</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Ali_Sayyad_Shirazi.jpg" alt="شهید صیاد شیرازی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 8)">صلوات (<span id="salavat-8">0</span>)</button>
+            <button onclick="increment('ziarat', 8)">زیارت عاشورا (<span id="ziarat-8">0</span>)</button>
+            <button onclick="increment('fateha', 8)">فاتحه (<span id="fateha-8">0</span>)</button>
+            <button onclick="increment('quran', 8)">صفحه قرآن (<span id="quran-8">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="9">
+            <strong>شهید قاسم سلیمانی</strong>
+            <p>فرمانده نیروی قدس سپاه</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Qasem_Soleimani_with_uniform.jpg" alt="شهید قاسم سلیمانی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 9)">صلوات (<span id="salavat-9">0</span>)</button>
+            <button onclick="increment('ziarat', 9)">زیارت عاشورا (<span id="ziarat-9">0</span>)</button>
+            <button onclick="increment('fateha', 9)">فاتحه (<span id="fateha-9">0</span>)</button>
+            <button onclick="increment('quran', 9)">صفحه قرآن (<span id="quran-9">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="10">
+            <strong>شهید ابومهدی المهندس</strong>
+            <p>نایب فرمانده حشد الشعبی</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Abu_Mahdi_al-Muhandis.jpg" alt="شهید ابومهدی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 10)">صلوات (<span id="salavat-10">0</span>)</button>
+            <button onclick="increment('ziarat', 10)">زیارت عاشورا (<span id="ziarat-10">0</span>)</button>
+            <button onclick="increment('fateha', 10)">فاتحه (<span id="fateha-10">0</span>)</button>
+            <button onclick="increment('quran', 10)">صفحه قرآن (<span id="quran-10">0</span>)</button>
+            </div>
+          </div>
+
+
+          <div class="card" data-id="11">
+            <strong>شهید ابراهیم هادی</strong>
+            <p>ورزشکار و رزمنده مشهور دفاع مقدس</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Ibrahim_Hadi.jpg" alt="شهید ابراهیم هادی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 11)">صلوات (<span id="salavat-11">0</span>)</button>
+            <button onclick="increment('ziarat', 11)">زیارت عاشورا (<span id="ziarat-11">0</span>)</button>
+            <button onclick="increment('fateha', 11)">فاتحه (<span id="fateha-11">0</span>)</button>
+            <button onclick="increment('quran', 11)">صفحه قرآن (<span id="quran-11">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="12">
+            <strong>شهید محسن حججی</strong>
+            <p>مدافع حرم - لشکر زرهی نجف اشرف</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Mohsen_Hojaji.jpg" alt="شهید محسن حججی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 12)">صلوات (<span id="salavat-12">0</span>)</button>
+            <button onclick="increment('ziarat', 12)">زیارت عاشورا (<span id="ziarat-12">0</span>)</button>
+            <button onclick="increment('fateha', 12)">فاتحه (<span id="fateha-12">0</span>)</button>
+            <button onclick="increment('quran', 12)">صفحه قرآن (<span id="quran-12">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="13">
+            <strong>شهید مصطفی صدرزاده</strong>
+            <p>فرمانده گردان عمار - مدافع حرم</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Mostafa_Sadrzadeh.jpg" alt="شهید مصطفی صدرزاده" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 13)">صلوات (<span id="salavat-13">0</span>)</button>
+            <button onclick="increment('ziarat', 13)">زیارت عاشورا (<span id="ziarat-13">0</span>)</button>
+            <button onclick="increment('fateha', 13)">فاتحه (<span id="fateha-13">0</span>)</button>
+            <button onclick="increment('quran', 13)">صفحه قرآن (<span id="quran-13">0</span>)</button>
+            </div>
+          </div>
+
+
+          <div class="card" data-id="14">
+            <strong>شهید محمد اتابه</strong>
+            <p>مدافع حرم - سپاه قدس</p>
+            <img src="https://defapress.ir/files/fa/news/1398/2/2/728456_371.jpg" alt="شهید محمد اتابه" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 14)">صلوات (<span id="salavat-14">0</span>)</button>
+            <button onclick="increment('ziarat', 14)">زیارت عاشورا (<span id="ziarat-14">0</span>)</button>
+            <button onclick="increment('fateha', 14)">فاتحه (<span id="fateha-14">0</span>)</button>
+            <button onclick="increment('quran', 14)">صفحه قرآن (<span id="quran-14">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="15">
+            <strong>شهید عماد مغنیه</strong>
+            <p>فرمانده نظامی حزب‌الله لبنان</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Imad_Mughniyeh.jpg" alt="شهید عماد مغنیه" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 15)">صلوات (<span id="salavat-15">0</span>)</button>
+            <button onclick="increment('ziarat', 15)">زیارت عاشورا (<span id="ziarat-15">0</span>)</button>
+            <button onclick="increment('fateha', 15)">فاتحه (<span id="fateha-15">0</span>)</button>
+            <button onclick="increment('quran', 15)">صفحه قرآن (<span id="quran-15">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="16">
+            <strong>سید حسن نصرالله</strong>
+            <p>دبیرکل حزب‌الله لبنان</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Hassan_Nasrallah_2009.jpg" alt="سید حسن نصرالله" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 16)">صلوات (<span id="salavat-16">0</span>)</button>
+            <button onclick="increment('ziarat', 16)">زیارت عاشورا (<span id="ziarat-16">0</span>)</button>
+            <button onclick="increment('fateha', 16)">فاتحه (<span id="fateha-16">0</span>)</button>
+            <button onclick="increment('quran', 16)">صفحه قرآن (<span id="quran-16">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="17">
+            <strong>شهید سید ابراهیم رئیسی</strong>
+            <p>رئیس جمهور شهید جمهوری اسلامی</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Ebrahim_Raisi_13991104000737_Test_NewPhotoFree.jpg" alt="شهید رئیسی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 17)">صلوات (<span id="salavat-17">0</span>)</button>
+            <button onclick="increment('ziarat', 17)">زیارت عاشورا (<span id="ziarat-17">0</span>)</button>
+            <button onclick="increment('fateha', 17)">فاتحه (<span id="fateha-17">0</span>)</button>
+            <button onclick="increment('quran', 17)">صفحه قرآن (<span id="quran-17">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="18">
+            <strong>شهید حسین امیرعبداللهیان</strong>
+            <p>وزیر امور خارجه شهید جمهوری اسلامی</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Hossein_Amir-Abdollahian_at_MSC_2022.jpg" alt="شهید امیرعبداللهیان" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 18)">صلوات (<span id="salavat-18">0</span>)</button>
+            <button onclick="increment('ziarat', 18)">زیارت عاشورا (<span id="ziarat-18">0</span>)</button>
+            <button onclick="increment('fateha', 18)">فاتحه (<span id="fateha-18">0</span>)</button>
+            <button onclick="increment('quran', 18)">صفحه قرآن (<span id="quran-18">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="19">
+            <strong>شهید حسین همدانی</strong>
+            <p>فرمانده مدافع حرم در سوریه</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Hossein_Hamedani.jpg" alt="شهید حسین همدانی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 19)">صلوات (<span id="salavat-19">0</span>)</button>
+            <button onclick="increment('ziarat', 19)">زیارت عاشورا (<span id="ziarat-19">0</span>)</button>
+            <button onclick="increment('fateha', 19)">فاتحه (<span id="fateha-19">0</span>)</button>
+            <button onclick="increment('quran', 19)">صفحه قرآن (<span id="quran-19">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="20">
+            <strong>شهید مصطفی چمران</strong>
+            <p>وزیر دفاع، دانشمند و فرمانده جنگ‌های نامنظم</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Mostafa_Chamran.jpg" alt="شهید مصطفی چمران" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 20)">صلوات (<span id="salavat-20">0</span>)</button>
+            <button onclick="increment('ziarat', 20)">زیارت عاشورا (<span id="ziarat-20">0</span>)</button>
+            <button onclick="increment('fateha', 20)">فاتحه (<span id="fateha-20">0</span>)</button>
+            <button onclick="increment('quran', 20)">صفحه قرآن (<span id="quran-20">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="21">
+            <strong>شهید سید مرتضی آوینی</strong>
+            <p>مستندساز و راوی دفاع مقدس</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Abbas_Babaei.jpg" alt="شهید سید مرتضی آوینی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 21)">صلوات (<span id="salavat-21">0</span>)</button>
+            <button onclick="increment('ziarat', 21)">زیارت عاشورا (<span id="ziarat-21">0</span>)</button>
+            <button onclick="increment('fateha', 21)">فاتحه (<span id="fateha-21">0</span>)</button>
+            <button onclick="increment('quran', 21)">صفحه قرآن (<span id="quran-21">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="22">
+            <strong>شهید نادر مهدوی</strong>
+            <p>فرمانده شجاع نیروی دریایی سپاه در نبرد با آمریکا</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Nader_Mahdavi.jpg" alt="شهید نادر مهدوی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 22)">صلوات (<span id="salavat-22">0</span>)</button>
+            <button onclick="increment('ziarat', 22)">زیارت عاشورا (<span id="ziarat-22">0</span>)</button>
+            <button onclick="increment('fateha', 22)">فاتحه (<span id="fateha-22">0</span>)</button>
+            <button onclick="increment('quran', 22)">صفحه قرآن (<span id="quran-22">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="23">
+            <strong>شهید عبدالرسول زرین</strong>
+            <p>تک‌تیرانداز برجسته دفاع مقدس با رکورد جهانی</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Abdolrasoul_Zarin.jpg" alt="شهید عبدالرسول زرین" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 23)">صلوات (<span id="salavat-23">0</span>)</button>
+            <button onclick="increment('ziarat', 23)">زیارت عاشورا (<span id="ziarat-23">0</span>)</button>
+            <button onclick="increment('fateha', 23)">فاتحه (<span id="fateha-23">0</span>)</button>
+            <button onclick="increment('quran', 23)">صفحه قرآن (<span id="quran-23">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="24">
+            <strong>شهید محمد جهان‌آرا</strong>
+            <p>فرمانده سپاه خرمشهر و قهرمان مقاومت</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Mohammad_Jahaniara.jpg" alt="شهید محمد جهان‌آرا" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 24)">صلوات (<span id="salavat-24">0</span>)</button>
+            <button onclick="increment('ziarat', 24)">زیارت عاشورا (<span id="ziarat-24">0</span>)</button>
+            <button onclick="increment('fateha', 24)">فاتحه (<span id="fateha-24">0</span>)</button>
+            <button onclick="increment('quran', 24)">صفحه قرآن (<span id="quran-24">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="25">
+            <strong>شهید محمد زمانی</strong>
+            <p>از شهدای تفحص پیکر شهدا در مناطق عملیاتی جنوب</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Mohammad_Zamani_tafahos.jpg/440px-Mohammad_Zamani_tafahos.jpg" alt="شهید محمد زمانی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 25)">صلوات (<span id="salavat-25">0</span>)</button>
+            <button onclick="increment('ziarat', 25)">زیارت عاشورا (<span id="ziarat-25">0</span>)</button>
+            <button onclick="increment('fateha', 25)">فاتحه (<span id="fateha-25">0</span>)</button>
+            <button onclick="increment('quran', 25)">صفحه قرآن (<span id="quran-25">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="26">
+            <strong>شهید ابوالفضل راه چمنی</strong>
+            <p>شهید مدافع حرم، معروف به شهید لبخند</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Abolfazl_Rahchamani.jpg" alt="شهید ابوالفضل راه چمنی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 26)">صلوات (<span id="salavat-26">0</span>)</button>
+            <button onclick="increment('ziarat', 26)">زیارت عاشورا (<span id="ziarat-26">0</span>)</button>
+            <button onclick="increment('fateha', 26)">فاتحه (<span id="fateha-26">0</span>)</button>
+            <button onclick="increment('quran', 26)">صفحه قرآن (<span id="quran-26">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="27">
+            <strong>شهید مهدی زین‌الدین</strong>
+            <p>فرمانده لشکر ۱۷ علی‌بن‌ابی‌طالب</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Mehdi_Zeinoddin.jpg" alt="شهید مهدی زین‌الدین" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 27)">صلوات (<span id="salavat-27">0</span>)</button>
+            <button onclick="increment('ziarat', 27)">زیارت عاشورا (<span id="ziarat-27">0</span>)</button>
+            <button onclick="increment('fateha', 27)">فاتحه (<span id="fateha-27">0</span>)</button>
+            <button onclick="increment('quran', 27)">صفحه قرآن (<span id="quran-27">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="28">
+            <strong>شهید یونس زنگی‌آبادی</strong>
+            <p>فرمانده دلیر دفاع مقدس</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Younes_Zangiyabadi.jpg" alt="شهید یونس زنگی‌آبادی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 28)">صلوات (<span id="salavat-28">0</span>)</button>
+            <button onclick="increment('ziarat', 28)">زیارت عاشورا (<span id="ziarat-28">0</span>)</button>
+            <button onclick="increment('fateha', 28)">فاتحه (<span id="fateha-28">0</span>)</button>
+            <button onclick="increment('quran', 28)">صفحه قرآن (<span id="quran-28">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="29">
+            <strong>شهید ابوالفضل سرلک</strong>
+            <p>مدافع حرم اهل بیت</p>
+            <img src="https://www.defapress.ir/files/fa/news/1399/12/3/862059_381.jpg" alt="شهید سرلک" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 29)">صلوات (<span id="salavat-29">0</span>)</button>
+            <button onclick="increment('ziarat', 29)">زیارت عاشورا (<span id="ziarat-29">0</span>)</button>
+            <button onclick="increment('fateha', 29)">فاتحه (<span id="fateha-29">0</span>)</button>
+            <button onclick="increment('quran', 29)">صفحه قرآن (<span id="quran-29">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="card" data-id="30">
+            <strong>شهید محمد طاها اقدامی</strong>
+            <p>شهید کودک مدافع حرم</p>
+            <img src="https://cdn.isna.ir/d/2018/09/23/3/57719407.jpg" alt="شهید محمد طاها اقدامی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 30)">صلوات (<span id="salavat-30">0</span>)</button>
+            <button onclick="increment('ziarat', 30)">زیارت عاشورا (<span id="ziarat-30">0</span>)</button>
+            <button onclick="increment('fateha', 30)">فاتحه (<span id="fateha-30">0</span>)</button>
+            <button onclick="increment('quran', 30)">صفحه قرآن (<span id="quran-30">0</span>)</button>
+            </div>
+          </div>
+
+          <!-- فرمانده 31 -->
+          <div class="card" data-id="31">
+            <strong>شهید سید جواد ذوالنور</strong>
+            <p>مدافع حرم و از شهدای برجسته مقاومت</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Seyed_Javad_Zolnoor.jpg" alt="شهید سید جواد ذوالنور" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 31)">صلوات (<span id="salavat-31">0</span>)</button>
+            <button onclick="increment('ziarat', 31)">زیارت عاشورا (<span id="ziarat-31">0</span>)</button>
+            <button onclick="increment('fateha', 31)">فاتحه (<span id="fateha-31">0</span>)</button>
+            <button onclick="increment('quran', 31)">صفحه قرآن (<span id="quran-31">0</span>)</button>
+            </div>
+          </div>
+
+
+          <!-- شهید 32 -->
+          <div class="card" data-id="32">
+            <strong>شهید سید مجتبی هاشمی</strong>
+            <p>مدافع حرم</p>
+            <img src="https://example.com/image32.jpg" alt="شهید سید مجتبی هاشمی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 32)">صلوات (<span id="salavat-32">0</span>)</button>
+            <button onclick="increment('ziarat', 32)">زیارت عاشورا (<span id="ziarat-32">0</span>)</button>
+            <button onclick="increment('fateha', 32)">فاتحه (<span id="fateha-32">0</span>)</button>
+            <button onclick="increment('quran', 32)">صفحه قرآن (<span id="quran-32">0</span>)</button>
+            </div>
+          </div>
+
+          <!-- شهید 33 -->
+          <div class="card" data-id="33">
+            <strong>شهید علی محمدی</strong>
+            <p>مدافع حرم</p>
+            <img src="https://example.com/image33.jpg" alt="شهید علی محمدی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 33)">صلوات (<span id="salavat-33">0</span>)</button>
+            <button onclick="increment('ziarat', 33)">زیارت عاشورا (<span id="ziarat-33">0</span>)</button>
+            <button onclick="increment('fateha', 33)">فاتحه (<span id="fateha-33">0</span>)</button>
+            <button onclick="increment('quran', 33)">صفحه قرآن (<span id="quran-33">0</span>)</button>
+            </div>
+          </div>
+
+          <!-- شهید 34 -->
+          <div class="card" data-id="34">
+            <strong>شهید حسن بابایی</strong>
+            <p>مدافع حرم</p>
+            <img src="https://example.com/image34.jpg" alt="شهید حسن بابایی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 34)">صلوات (<span id="salavat-34">0</span>)</button>
+            <button onclick="increment('ziarat', 34)">زیارت عاشورا (<span id="ziarat-34">0</span>)</button>
+            <button onclick="increment('fateha', 34)">فاتحه (<span id="fateha-34">0</span>)</button>
+            <button onclick="increment('quran', 34)">صفحه قرآن (<span id="quran-34">0</span>)</button>
+            </div>
+          </div>
+
+          <!-- شهید 35 -->
+          <div class="card" data-id="35">
+            <strong>شهید رضا کیانی</strong>
+            <p>مدافع حرم</p>
+            <img src="https://example.com/image35.jpg" alt="شهید رضا کیانی" />
+            <div class="commander-buttons">
+            <button onclick="increment('salavat', 35)">صلوات (<span id="salavat-35">0</span>)</button>
+            <button onclick="increment('ziarat', 35)">زیارت عاشورا (<span id="ziarat-35">0</span>)</button>
+            <button onclick="increment('fateha', 35)">فاتحه (<span id="fateha-35">0</span>)</button>
+            <button onclick="increment('quran', 35)">صفحه قرآن (<span id="quran-35">0</span>)</button>
+            </div>
+          </div>
+
+
+
+        </div>
+      <script>
+          const categories = ["salavat", "ziarat", "fateha", "quran"];
+          const totalCommanders = 3;
+
+          // بارگذاری مقادیر ذخیره شده
+          window.onload = () => {
+            for (let i = 0; i < totalCommanders; i++) {
+              categories.forEach(cat => {
+                const key = `${cat}-${i}`;
+                const count = localStorage.getItem(key) || 0;
+                const span = document.getElementById(key);
+                if (span) span.textContent = count;
+              });
+            }
+          };
+
+          // افزایش و ذخیره شمارش
+          function increment(category, id) {
+            const key = `${category}-${id}`;
+            let count = localStorage.getItem(key) || 0;
+            count = parseInt(count) + 1;
+            localStorage.setItem(key, count);
+            document.getElementById(key).textContent = count;
+          }
+        </script>
+        <script>
+          function filterCommanders() {
+            const input = document.getElementById("commanderSearch").value.trim();
+            const cards = document.querySelectorAll("#commanders .card");
+            const resultBox = document.getElementById("commanderSearchResult");
+            let matchCount = 0;
+
+            if (input === "") {
+              cards.forEach(card => card.style.display = "block");
+              resultBox.innerHTML = "";
+              return;
+            }
+
+            cards.forEach(card => {
+              const name = card.querySelector("strong").textContent;
+              if (name.includes(input)) {
+                card.style.display = "block";
+                matchCount++;
+              } else {
+                card.style.display = "none";
+              }
+            });
+
+            if (matchCount === 0) {
+              resultBox.innerHTML = "❗ فرمانده شهیدی با این نام یافت نشد. لطفاً دوباره امتحان فرمایید.";
+            } else {
+              resultBox.innerHTML = "";
+            }
+          }
+        </script>
+  </div>
+
+
+
+  <div id="feelings" class="section hidden">
+    <h2>دلنوشته‌ها</h2>
+    <button onclick="openPopup('شهدا')">➕ شهدا</button>
+    <button onclick="openPopup('کشور')">➕ کشور</button>
+    <div id="feelingList"></div>
+  </div>
+
+  <div id="feedback" class="section hidden">
+      
+        <h2>نظرات</h2>
+        <p>شما می‌توانید دیدگاه‌های خود را به‌صورت کاملاً ناشناس ثبت نمایید:</p>
+        <style>
+          a.button-link:hover {
+            background-color: #0056b3;
+          }
+        </style>
+
+        <a href="https://eitaayar.ir/anonymous/aQ1Q.Q14746" class="button-link" style="
+          display: inline-block;
+          padding: 12px 24px;
+          background-color: #004d40;
+          color: #a5d6a7;
+          text-decoration: none;
+          border-radius: 6px;
+          font-weight: bold;
+          font-family: sans-serif;
+          transition: background-color 0.3s;
+        ">
+          ارسال پیشنهادات
+        </a>
+  
+       
+    <style>
+      #satisfactionForm {
+        background: linear-gradient(to bottom right, #ffffff, #f3f3f3);
+        border-radius: 20px;
+        padding: 30px;
+        margin: 40px auto;
+        max-width: 500px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        text-align: center;
+        font-family: "Vazirmatn", sans-serif;
+      }
+
+      #satisfactionForm h3 {
+        margin-bottom: 10px;
+        color: #333;
+        font-size: 18px;
+      }
+
+      #satisfactionForm p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 20px;
+      }
+
+      .star-rating {
+        display: flex;
+        justify-content: center;
+        flex-direction: row-reverse;
+        font-size: 30px;
+        gap: 10px;
+        cursor: pointer;
+      }
+
+      .star-rating input {
+        display: none;
+      }
+
+      .star-rating label {
+        color: #ccc;
+        transition: transform 0.2s, color 0.3s;
+      }
+
+      .star-rating input:checked ~ label,
+      .star-rating label:hover,
+      .star-rating label:hover ~ label {
+        color: #ffc107;
+        transform: scale(1.2);
+      }
+
+      .btn-submit-rating {
+        margin-top: 20px;
+        background-color: #004d40;
+        border: none;
+        color: white;
+        padding: 10px 28px;
+        font-size: 15px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-submit-rating:hover {
+        background-color: #0056b3;
+      }
+    </style>
+
+    <div id="satisfactionForm">
+      <h3>📋 فرم رضایت‌سنجی خدمات</h3>
+      <p>لطفاً میزان رضایت خود را با انتخاب تعداد ستاره مشخص کنید. نظرات شما باعث بهبود خدمات ما خواهد شد 🙏</p>
+      <form id="serviceSatisfaction" onsubmit="submitSatisfaction(event)">
+        <div class="star-rating">
+          <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+          <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+          <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+          <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+          <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+        </div>
+        <button type="submit" class="btn-submit-rating">ثبت امتیاز</button>
+      </form>
+    </div>
+
+    <script>
+      function submitSatisfaction(e) {
+        e.preventDefault();
+        const rating = document.querySelector('input[name="rating"]:checked');
+        if (!rating) return alert("لطفاً یک امتیاز انتخاب کنید ⭐");
+
+        const name = prompt("در صورت تمایل، نام شما (اختیاری):") || "ناشناس";
+
+        fetch("https://script.google.com/macros/s/AKfycbzUNtgJREtpXFLizjJ0q3oz8myLAibp5M8UCY2IKKm4ye42WqGSeClLpE01IGvTLtSViQ/exec", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ type: "satisfaction", name, rating: rating.value })
+        })
+        .then(res => res.text())
+        .then(() => {
+          alert("از ثبت امتیاز شما سپاسگزاریم 🌟");
+          document.getElementById("serviceSatisfaction").reset();
+        })
+        .catch(() => {
+          alert("از ثبت امتیاز شما سپاسگزاریم 🌟");
+        });
+      }
+    </script>
+  </div>
+  <div id="adminLogin" class="section hidden">
+    <h2>مدیریت نرم افزار روایت ایران</h2>
+    <div>ورود به عنوان مدیر :</div>
+    <input type="text" id="adminUser" placeholder="نام کاربری" />
+    <input type="password" id="adminPass" placeholder="رمز عبور" />
+    <button onclick="loginAdmin()">ورود</button>
+  </div>
+
+  <div id="adminPanel" class="section hidden">
+    <h2>سلام امیر حسین امانی، به اپلیکیشن خوش آمدی</h2>
+    <div id="adminMessages"></div>
+  </div>
+<!-- پاپ‌آپ خروج شیک -->
+<div id="exitPopup" style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: 'Vazir', sans-serif;
+  ">
+  
+  <div style="
+    background: #fff;
+    padding: 24px 20px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 350px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    animation: fadeIn 0.3s ease;">
+    
+    <div style="font-size: 36px; margin-bottom: 12px;">❓</div>
+    
+    <h3 style="font-size: 16px; margin-bottom: 12px; color: #333;">
+      آیا مطمئن هستید که می‌خواهید خارج شوید؟
+    </h3>
+    
+    <p style="font-size: 14px; color: #666; margin-bottom: 24px;">
+      در صورت تأیید، برنامه بسته خواهد شد.
+    </p>
+    
+    <div style="display: flex; justify-content: space-between; gap: 10px;">
+      <button onclick="closeExitPopup()" style="
+        flex: 1;
+        background: #e0e0e0;
+        color: #333;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;">
+        لغو
+      </button>
+      
+      <button onclick="exitApp()" style="
+        flex: 1;
+        background: #d32f2f;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;">
+        خروج
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- انیمیشن fade-in -->
+<style>
+  @keyframes fadeIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
+
+<!-- اسکریپت نمایش پاپ‌آپ -->
+<script>
+  function openExitPopup() {
+    document.getElementById('exitPopup').style.display = 'flex';
+  }
+
+  function closeExitPopup() {
+    document.getElementById('exitPopup').style.display = 'none';
+  }
+
+  function exitApp() {
+    // در اپ‌های واقعی (مثلاً Cordova یا WebView) می‌تونی اپ رو ببندی
+    alert("خروج از برنامه انجام شد!");
+    window.close(); // توجه: در مرورگر فقط در تب‌هایی که با JS باز شده‌اند کار می‌کند
+  }
+</script>
+
+<style>
+  #contactUs {
+    padding: 30px;
+    max-width: 600px;
+    margin: auto;
+    font-family: 'Vazir', sans-serif;
+    color: #333;
+  }
+  #contactUs h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 28px;
+    color: #004d40;
+  }
+  #contactUs p {
+    text-align: center;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  .contact-item:not(:last-child) {
+    margin-bottom: 15px; /* یا هر عدد دلخواه */
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    background: #00796b;
+    color: #fff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .contact-item svg {
+    width: 28px;
+    height: 28px;
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
+  .contact-item span {
+    flex-grow: 1;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .contact-item button {
+    background: #004d40;
+    border: none;
+    color: white;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+  }
+  /* ریسپانسیو برای موبایل */
+  @media (max-width: 480px) {
+    #contactUs {
+      padding: 20px 15px;
+      max-width: 100%;
+    }
+    #contactUs h2 {
+      font-size: 24px;
+    }
+    #contactUs p {
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+    .contact-item {
+      padding: 10px 15px;
+    }
+    .contact-item svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+    .contact-item span {
+      font-size: 11px;
+    }
+    .contact-item button {
+      padding: 6px 12px;
+      font-size: 11px;
+    }
+  }
+</style>
+    <div id="contactUs" class="section hidden">
+    
+      <h2>ارتباط با مجموعه</h2>
+      <p>
+        ما همیشه آماده شنیدن نظرات، سوالات و پیشنهادات شما هستیم.<br>
+        لطفاً از طریق راه‌های زیر با ما در ارتباط باشید تا در اسرع وقت پاسخگوی شما باشیم.
+      </p>
+
+      <div>
+        <div class="contact-item" onclick="window.location.href='mailto:a42464849@gmail.com'">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>. ایمیل پشتیبانی </span>
+          <button>ارسال ایمیل</button>
+        </div>
+
+        <div class="contact-item" onclick="window.open('https://eitaa.com/amirhossein_amani', '_blank')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2h-3l-4 4v-4H7a2 2 0 0 1-2-2v-2"/></svg>
+          <span>. پشتیبانی ایتا </span>
+          <button>مراجعه به ایتا</button>
+        </div>
+
+        <div class="contact-item" onclick="window.open('https://t.me/Amir_devstudio', '_blank')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 2L11 13"></path><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+          <span>. پشتیبانی تلگرام </span>
+          <button>مراجعه به تلگرام</button>
+        </div>
+
+        <div class="contact-item" onclick="window.open('https://zil.ink/khat-new', '_blank')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+          <span>. فروشگاه لوازم التحریر </span>
+          <button>مشاهده فروشگاه</button>
+        </div>
+
+        <div class="contact-item" onclick="window.open('https://eitaa.com/eitaatune', '_blank')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 20l9-12H3l9 12z"/></svg>
+          <span>. کانال ایتاتیون </span>
+          <button>بازدید کانال</button>
+        </div>
+      </div>
+    
+    </div>
+
+  <div id="about" class="section hidden">
+    <h2>درباره ما</h2>
+    <p>روایت ایران یک پلتفرم مستقل و مردمی است که با هدف ترویج گفت‌وگو، هم‌اندیشی و تبادل آزاد دیدگاه‌ها میان ایرانیان شکل گرفته است. ما بر این باوریم که هر فرد، فارغ از گرایش، باور یا پیشینه‌اش، شایسته آن است که صدایش شنیده شود. از این‌رو، تلاش ما بر آن است تا بستری امن، محترمانه با رعایت اصول اخلاقی، احترام متقابل و گفتمان سازنده فراهم کنیم تا همه‌ی مردم ایران بتوانندتجربیات خود را با دیگران در میان بگذارند.</p>
+  
+      <style>
+        .stats-section {
+          padding: 40px 20px;
+          text-align: center;
+          background: linear-gradient(to bottom, #f9f9f9, #fff);
+        }
+
+        .stats-section h2 {
+          font-size: 24px;
+          margin-bottom: 30px;
+          color: #333;
+        }
+
+        .stats-container {
+          display: flex;
+          justify-content: center;
+          gap: 40px;
+          flex-wrap: wrap;
+        }
+
+        .stat-circle {
+          width: 130px;
+          height: 130px;
+          position: relative;
+          border-radius: 50%;
+          background: conic-gradient(#004d40 var(--progress), #eee 0%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 22px;
+          font-weight: bold;
+          color: #004d40;
+          margin: 0 auto 10px;
+          transition: all 0.4s ease;
+        }
+
+
+        .stat-circle::after {
+          content: "";
+          position: absolute;
+          width: 90px;
+          height: 90px;
+          background: white;
+          border-radius: 50%;
+        }
+
+        .stat-number {
+          position: absolute;
+          z-index: 2;
+        }
+
+        .stat-label {
+          font-size: 14px;
+          color: #444;
+          margin-top: 8px;
+        }
+      </style>
+
+    <section class="stats-section">
+      <h2>🏆دستاوردهای ما🏆</h2>
+      <div class="stats-container">
+        <div>
+          <div class="stat-circle" style="--progress: 20%">
+            <div class="stat-number" data-target="500">0</div>
+          </div>
+          <div class="stat-label">تعداد پیام‌های ارسالی</div>
+        </div>
+        <div>
+          <div class="stat-circle" style="--progress: 60%">
+            <div class="stat-number" data-target="120">0</div>
+          </div>
+          <div class="stat-label">کاربران فعال</div>
+        </div>
+        <div>
+          <div class="stat-circle" style="--progress: 85%">
+            <div class="stat-number" data-target="75">0</div>
+          </div>
+          <div class="stat-label">درصد رضایت کاربران</div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // شمارنده انیمیشنی اعداد
+      function animateNumbers() {
+        const counters = document.querySelectorAll(".stat-number");
+        counters.forEach(counter => {
+          const update = () => {
+            const target = +counter.dataset.target;
+            const current = +counter.innerText;
+            const increment = Math.ceil(target / 50);
+
+            if (current < target) {
+              counter.innerText = current + increment;
+              setTimeout(update, 30);
+            } else {
+              counter.innerText = target;
+            }
+          };
+          update();
+        });
+      }
+
+      // اجرا فقط هنگام اسکرول به اون بخش
+      const section = document.querySelector(".stats-section");
+      let hasAnimated = false;
+      window.addEventListener("scroll", () => {
+        const rect = section.getBoundingClientRect();
+        if (!hasAnimated && rect.top < window.innerHeight - 100) {
+          animateNumbers();
+          hasAnimated = true;
+        }
+      });
+    </script>
+  </div>
+<div id="popup" class="hidden">
+  <h3 id="popupTitle"></h3>
+  <input type="text" id="popupSubject" placeholder="نام یا موضوع">
+  <textarea id="popupContent" placeholder="متن دلنوشته..."></textarea>
+  <button onclick="submitFeeling()">ثبت</button>
+  <button onclick="closePopup()">بستن</button>
+</div>
+</main>
+<footer id="footer">تمام حقوق این پلتفرم برای روایت ایران محفوظ است © 2025</footer>
+<div id="footer">
+  A . H . A 
+
+<script>
+ const STORAGE_KEYS = {
+  messages: "iranApp_messages",
+  expansions: "iranApp_expansions",
+  commanderReactions: "iranApp_commanderReactions",
+  feelings: "iranApp_feelings"
+};
+
+let messages = JSON.parse(localStorage.getItem(STORAGE_KEYS.messages)) || [];
+let expansions = JSON.parse(localStorage.getItem(STORAGE_KEYS.expansions)) || [];
+let commanderReactions = JSON.parse(localStorage.getItem(STORAGE_KEYS.commanderReactions)) || {
+  0: { salavat: 0, ziarat: 0, fateha: 0, quran: 0 },
+  1: { salavat: 0, ziarat: 0, fateha: 0, quran: 0 },
+  2: { salavat: 0, ziarat: 0, fateha: 0, quran: 0 }
+};
+let feelings = JSON.parse(localStorage.getItem(STORAGE_KEYS.feelings)) || [];
+
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("show");
+}
+
+function loadDataFromSheet() {
+  fetch("https://script.google.com/macros/s/AKfycbzUNtgJREtpXFLizjJ0q3oz8myLAibp5M8UCY2IKKm4ye42WqGSeClLpE01IGvTLtSViQ/exec")
+    .then(res => res.json())
+    .then(data => {
+      messages = data.messages || [];
+      expansions = data.expansions || [];
+      feelings = data.feelings || [];
+      commanderReactions = data.commanderReactions || commanderReactions;
+
+      localStorage.setItem(STORAGE_KEYS.messages, JSON.stringify(messages));
+      localStorage.setItem(STORAGE_KEYS.expansions, JSON.stringify(expansions));
+      localStorage.setItem(STORAGE_KEYS.feelings, JSON.stringify(feelings));
+      localStorage.setItem(STORAGE_KEYS.commanderReactions, JSON.stringify(commanderReactions));
+
+      loadExpansions();
+      loadMessages();
+      loadFeelings();
+      renderCommanderCounts();
+    })
+    .catch(console.error);
+}
+
+
+function showSection(id) {
+  toggleMenu();
+  const sections = document.querySelectorAll("main > div.section");
+  sections.forEach(s => s.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+  if(id === "expand") loadExpansions();
+  else if(id === "messages") loadMessages();
+  else if(id === "commanders") renderCommanderCounts();
+  else if(id === "feelings") loadFeelings();
+  else if(id === "adminPanel") renderAdminPanel();
+}
+
+const anonRadios = document.getElementsByName("anon");
+const nameField = document.getElementById("nameField");
+anonRadios.forEach(radio => {
+  radio.addEventListener("change", () => {
+    nameField.classList.toggle("hidden", radio.value === "yes");
+    if (radio.value === "yes") nameField.value = "";
+  });
+});
+
+function sendToSheet(name, text) {
+  fetch("https://script.google.com/macros/s/AKfycbzUNtgJREtpXFLizjJ0q3oz8myLAibp5M8UCY2IKKm4ye42WqGSeClLpE01IGvTLtSViQ/exec", {
+    method: "POST",
+    body: JSON.stringify({ name, text }),
+    headers: { "Content-Type": "application/json" }
+  })
+  .then(res => res.text())
+  .then(console.log)
+  .catch(console.error);
+}
+
+function submitExpansion() {
+  const text = document.getElementById("expandText").value.trim();
+  if (text.length < 3) return alert("لطفا ادامه جمله را وارد کنید.");
+  const anon = document.querySelector('input[name="anon"]:checked').value;
+  const name = anon === "no" ? nameField.value.trim() || "ناشناس" : "ناشناس";
+  const msg = { text, name, date: new Date().toISOString() };
+  expansions.push(msg);
+  messages.unshift(msg);
+  localStorage.setItem(STORAGE_KEYS.expansions, JSON.stringify(expansions));
+  localStorage.setItem(STORAGE_KEYS.messages, JSON.stringify(messages));
+  sendToSheet(name, text);
+  loadExpansions();
+  loadMessages();
+  document.getElementById("expandText").value = "";
+  nameField.value = "";
+}
+
+function loadExpansions() {
+  const container = document.getElementById("expansions");
+  container.innerHTML = expansions.map(item => `
+    <div class="card">
+      <strong>${item.name}:</strong> ${item.text}
+      <div class='reaction-btns'>
+        <button onclick="this.innerText = '❤️ ' + ((parseInt(this.innerText.split(' ')[1]||0) + 1))">❤️ 0</button>
+        <button onclick="this.innerText = '💔 ' + ((parseInt(this.innerText.split(' ')[1]||0) + 1))">💔 0</button>
+        <button onclick="this.innerText = '👍 ' + ((parseInt(this.innerText.split(' ')[1]||0) + 1))">👍 0</button>
+        <button onclick="this.innerText = '👎 ' + ((parseInt(this.innerText.split(' ')[1]||0) + 1))">👎 0</button>
+        <button onclick="this.innerText = '🙏 ' + ((parseInt(this.innerText.split(' ')[1]||0) + 1))">🙏 0</button>
+      </div>
+    </div>`).join("");
+}
+
+function loadMessages() {
+  const container = document.getElementById("messageList");
+  container.innerHTML = messages.map(msg => `
+    <div class="card">
+      <strong>${msg.name}:</strong> ${msg.text}
+      <div class='reaction-btns'>
+        <button onclick="this.innerText = '❤️ ' + ((parseInt(this.innerText.split(' ')[1]||0) + 1))">❤️ 0</button>
+        <button onclick="this.innerText = '💔 ' + ((parseInt(this.innerText.split(' ')[1]||0) + 1))">💔 0</button>
+        <button onclick="this.innerText = '👍 ' + ((parseInt(this.innerText.split(' ')[1]||0) + 1))">👍 0</button>
+        <button onclick="this.innerText = '👎 ' + ((parseInt(this.innerText.split(' ')[1]||0) + 1))">👎 0</button>
+        <button onclick="this.innerText = '🙏 ' + ((parseInt(this.innerText.split(' ')[1]||0) + 1))">🙏 0</button>
+      </div>
+    </div>`).join("");
+}
+
+function incrementCommanderReaction(commanderId, reactionType) {
+  commanderReactions[commanderId][reactionType]++;
+  localStorage.setItem(STORAGE_KEYS.commanderReactions, JSON.stringify(commanderReactions));
+  renderCommanderCounts();
+}
+
+function renderCommanderCounts() {
+  for (let id = 0; id <= 2; id++) {
+    const c = commanderReactions[id];
+    const container = document.getElementById(`commander-count-${id}`);
+    if(container){
+      container.innerHTML = `صلوات: ${c.salavat} | زیارت عاشورا: ${c.ziarat} | فاتحه: ${c.fateha} | صفحه قرآن: ${c.quran}`;
+    }
+  }
+}
+
+let currentFeelingType = "";
+function openPopup(type) {
+  currentFeelingType = type;
+  document.getElementById("popupTitle").textContent = `دلنوشته برای ${type}`;
+  document.getElementById("popup").classList.remove("hidden");
+}
+function closePopup() {
+  document.getElementById("popup").classList.add("hidden");
+}
+function submitFeeling() {
+  const subject = document.getElementById("popupSubject").value.trim();
+  const content = document.getElementById("popupContent").value.trim();
+  if (subject && content) {
+    const entry = { type: currentFeelingType, subject, content };
+    feelings.unshift(entry);
+    localStorage.setItem(STORAGE_KEYS.feelings, JSON.stringify(feelings));
+    loadFeelings();
+    closePopup();
+  }
+}
+
+function loadFeelings() {
+  const container = document.getElementById("feelingList");
+  container.innerHTML = feelings.map(item => `
+    <div class="card">
+      <strong>${item.type} - ${item.subject}</strong><p>${item.content}</p>
+    </div>`).join("");
+}
+
+function loginAdmin() {
+  const user = document.getElementById("adminUser").value.trim();
+  const pass = document.getElementById("adminPass").value.trim();
+  if(user === "amirhossein" && pass === "123456"){
+    alert("ورود موفق");
+    document.getElementById("adminLogin").classList.add("hidden");
+    document.getElementById("adminPanel").classList.remove("hidden");
+    showSection("adminPanel");
+    renderAdminPanel();
+  } else {
+    alert("نام کاربری یا رمز اشتباه است");
+  }
+}
+
+function renderAdminPanel() {
+  const panel = document.getElementById("adminMessages");
+  panel.innerHTML = "<h3>پیام‌های گسترش جمله</h3>" + expansions.map((e, i) => `
+    <div class="card">
+      <strong>${e.name}:</strong> ${e.text}<br>
+      <button onclick="editExpansion(${i})">✏️ ویرایش</button>
+      <button onclick="deleteExpansion(${i})">🗑️ حذف</button>
+    </div>`).join("") +
+    "<h3>دلنوشته‌ها</h3>" + feelings.map((f, i) => `
+    <div class="card">
+      <strong>${f.type} - ${f.subject}</strong><p>${f.content}</p>
+      <button onclick="deleteFeeling(${i})">🗑️ حذف</button>
+    </div>`).join("");
+}
+
+function editExpansion(index) {
+  const newText = prompt("ویرایش پیام:", expansions[index].text);
+  if(newText) {
+    expansions[index].text = newText;
+    localStorage.setItem(STORAGE_KEYS.expansions, JSON.stringify(expansions));
+    renderAdminPanel();
+    loadExpansions();
+  }
+}
+
+function deleteExpansion(index) {
+  if(confirm("آیا از حذف مطمئن هستید؟")) {
+    expansions.splice(index, 1);
+    localStorage.setItem(STORAGE_KEYS.expansions, JSON.stringify(expansions));
+    renderAdminPanel();
+    loadExpansions();
+  }
+}
+
+function deleteFeeling(index) {
+  if(confirm("دلنوشته حذف شود؟")) {
+    feelings.splice(index, 1);
+    localStorage.setItem(STORAGE_KEYS.feelings, JSON.stringify(feelings));
+    renderAdminPanel();
+    loadFeelings();
+  }
+}
+
+showSection("expand");
+renderCommanderCounts();
+
+</script>
+</body>
+</html>
